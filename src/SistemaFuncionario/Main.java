@@ -293,6 +293,7 @@ public class Main {
                  idade = input.nextInt();
                 System.out.print("Digite o sexo do líder técnico: ");
                  sexo = input.nextLine();
+                input.nextLine();
                 System.out.print("Digite o Status do líder técnico: ");
                  status = input.nextLine();
                 System.out.println("Digite o salário bruto do líder técnico:");
@@ -314,6 +315,7 @@ public class Main {
                 idade = input.nextInt();
                 System.out.print("Digite o sexo do gerente de departamento: ");
                 sexo = input.nextLine();
+                input.nextLine();
                 System.out.print("Digite o Status do gerente de departamento: ");
                 status = input.nextLine();
                 System.out.println("Digite o salário bruto do gerente de departamento:");
@@ -335,6 +337,7 @@ public class Main {
                 idade = input.nextInt();
                 System.out.print("Digite o sexo do gerente geral: ");
                 sexo = input.nextLine();
+                input.nextLine();
                 System.out.print("Digite o Status do gerente geral: ");
                 status = input.nextLine();
                 System.out.println("Digite o salário bruto do gerente geral:");
