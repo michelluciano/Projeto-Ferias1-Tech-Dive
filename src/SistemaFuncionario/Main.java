@@ -16,6 +16,9 @@ public class Main {
         Colaborador colaborador = new Colaborador(1,"Marcos",20,"Masculino","Ativo",1000,10);
         banco.add(colaborador);
 
+        Colaborador colaborador2 = new Colaborador(5,"Jones",20,"Masculino","Inativo",1000,10);
+        banco.add(colaborador2);
+
         LiderTecnico lidertecnico = new LiderTecnico(2,"Michel",21,"Masculino","Ativo",2000,10,200);
         banco.add(lidertecnico);
 
@@ -45,7 +48,8 @@ public class Main {
             System.out.println("7 - Listar somente os funcionários demitidos");
             System.out.println("8 - Sair");
             System.out.print("Sua opção: ");
-            opcao = Integer.parseInt(input.nextLine()); // lê a opção do usuário
+            opcao = input.nextInt(); // lê a opção do usuário
+            input.nextLine();
 
             switch(opcao){
                 case 1:
@@ -73,10 +77,73 @@ public class Main {
 
                     break;
                 case 3:
-                    // chama o menu do cliente
+                    // demitir funcionario
+                    System.out.println("Digite o Codigo Identificador do funcionario a ser atualizado:");
+                    auxPesquisa = input.nextLine();
+                    auxBanco = pesquisarFunc(auxPesquisa);
+                    if (auxBanco == null) {
+                        System.out.println("\nFuncionario não encontrado.");
+                    } else {
+                        System.out.println("------Dados Atuais-----------");
+                        System.out.println(" - Id:               \t" + auxBanco.getId());
+                        System.out.println(" - Nome:             \t" + auxBanco.getNome());
+                        System.out.println(" - Idade:            \t" + auxBanco.getIdade());
+                        System.out.println(" - Sexo:             \t" + auxBanco.getSexo());
+                        System.out.println(" - Status:           \t" + auxBanco.getStatus());
+                        System.out.println(" - Salário Bruto:    \t" + auxBanco.getSalarioBruto());
+                        System.out.println(" - Descontos:        \t" + auxBanco.getDescontos());
+                        System.out.println("-----------------------------");
+                        System.out.println("-----------------------------");
+                        System.out.print("\nDeseja DEMITIR o colaborador?"+
+                                         "\n1 - para DEMITIR"+
+                                         "\n2 - para CANCELAR\n");
+                        int opcaoDemi = input.nextInt();
+                        if(opcaoDemi == 1) {
+                            auxBanco.setStatus("Inativo");
+                            System.out.println("-----STATUS ATUALIZADO COM SUCESSO---");
+
+                        }else{
+                            System.out.println("-----CANCELADA A ATUALIZAÇÃO---");
+
+                        }
+                    }
                     break;
                 case 4:
-                    // chama o menu do cliente
+                    //atualizar
+                    System.out.println("Digite o Codigo Identificador do funcionario a ser atualizado:");
+                    auxPesquisa = input.nextLine();
+                    auxBanco = pesquisarFunc(auxPesquisa);
+                    if (auxBanco == null) {
+                        System.out.println("\nFuncionario não encontrado.");
+                    } else {
+                        System.out.println("------Dados Atuais-----------");
+                        System.out.println(" - Id:               \t" + auxBanco.getId());
+                        System.out.println(" - Nome:             \t" + auxBanco.getNome());
+                        System.out.println(" - Idade:            \t" + auxBanco.getIdade());
+                        System.out.println(" - Sexo:             \t" + auxBanco.getSexo());
+                        System.out.println(" - Status:           \t" + auxBanco.getStatus());
+                        System.out.println(" - Salário Bruto:    \t" + auxBanco.getSalarioBruto());
+                        System.out.println(" - Descontos:        \t" + auxBanco.getDescontos());
+                        System.out.println("-----------------------------");
+                        System.out.println("---Atualize os novos dados---");
+                        System.out.print("\nDigite o nome do colaborador: ");
+                        String nome = input.nextLine();
+                        System.out.print("Digite a idade do colaborador: ");
+                        int idade = input.nextInt();
+                        System.out.print("Digite o sexo do colaborador: ");
+                        String sexo = input.nextLine();
+                        input.nextLine();
+                        System.out.println("Digite o salário bruto do colaborador:");
+                        double salarioBruto = input.nextDouble();
+                        System.out.println("Digite o valor do desconto do colaborador:");
+                        double desconto = input.nextDouble();
+                        auxBanco.setNome(nome);
+                        auxBanco.setIdade(idade);
+                        auxBanco.setSexo(sexo);
+                        auxBanco.setSalarioBruto(salarioBruto);
+                        auxBanco.setDescontos(desconto);
+                        System.out.println("-----DADOS ATUALIZADOS COM SUCESSO---");
+                    }
                     break;
                 case 5:
                     // listar todos
@@ -110,10 +177,11 @@ public class Main {
                     break;
                 case 6:
                     // lista funcionario trabalhando
-                    System.out.println("-------LISTA DE CLIENTES-------");
+
                     if (banco.isEmpty()) {
                         System.out.println("Não existem funcionarios cadastrados.");
                     } else {
+                        System.out.println("-------LISTA DE FUNCIONARIOS-------");
                         for (int i = 0; i < banco.size(); i++) {
                             if (banco.get(i).getStatus().equals("Ativo")) {
                                 auxBanco = banco.get(i);
@@ -141,14 +209,16 @@ public class Main {
                     break;
                 case 7:
                     // chama o menu do cliente
-                    // lista funcionario trabalhando
-                    System.out.println("-------LISTA DE CLIENTES-------");
+                    // lista funcionario demitidos
+
                     if (banco.isEmpty()) {
                         System.out.println("Não existem funcionarios cadastrados.");
                     } else {
+                        System.out.println("-------LISTA DE FUNCIONARIOS_-------");
                         for (int i = 0; i < banco.size(); i++) {
                             if (banco.get(i).getStatus().equals("Inativo")) {
                                 auxBanco = banco.get(i);
+
                                 System.out.println("------------------------------------");
                                 System.out.println(" - Id:               \t" + auxBanco.getId());
                                 System.out.println(" - Nome:             \t" + auxBanco.getNome());

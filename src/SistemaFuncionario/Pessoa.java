@@ -6,7 +6,7 @@ public class Pessoa {
     private int idade;
     private String sexo;
     private String status;
-    public static int contadorPessoas = 4;
+    public static int contadorPessoas = 5;
 
     public Pessoa(){
 
